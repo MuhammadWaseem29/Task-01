@@ -39,11 +39,6 @@ To enable and use SSH commands, you need to have the OpenSSH server installed an
    sudo ufw allow ssh
    ```
 
-Here's the updated `README.md` file with the additional commands you provided:
-
-### `README.md`
-
-```markdown
 # Jenkins Installation Guide
 
 This guide will walk you through the process of installing Jenkins on a Linux system.
