@@ -39,34 +39,130 @@ To enable and use SSH commands, you need to have the OpenSSH server installed an
    sudo ufw allow ssh
    ```
 
-### On Windows
+Here's the updated `README.md` file with the additional commands you provided:
 
-1. **Install OpenSSH Server** (if not already installed):
-   - Open "Settings" -> "Apps" -> "Optional features" -> "Add a feature".
-   - Find and install "OpenSSH Server".
+### `README.md`
 
-2. **Start and Enable SSH Service**:
-   - Open PowerShell as Administrator:
-     ```powershell
-     Start-Service sshd
-     Set-Service -Name sshd -StartupType 'Automatic'
-     ```
+```markdown
+# Jenkins Installation Guide
 
-3. **Check SSH Service Status**:
-   ```powershell
-   Get-Service sshd
-   ```
+This guide will walk you through the process of installing Jenkins on a Linux system.
 
-4. **Configure SSH** (if needed):
-   - Edit the SSH configuration file located at:
-     ```
-     C:\ProgramData\ssh\sshd_config
-     ```
+## Prerequisites
 
-5. **Allow SSH Through Firewall**:
-   - Open "Windows Defender Firewall" -> "Advanced settings".
-   - Create a new inbound rule allowing TCP port 22.
+- A Linux distribution (e.g., Ubuntu, Debian, or Kali Linux)
+- Java Development Kit (JDK) installed (Jenkins requires Java 11 or newer)
 
+## Step 1: Update System Packages
+
+Before installing Jenkins, update your system package list.
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+## Step 2: Install Java
+
+Jenkins requires Java to run. Install the OpenJDK package.
+
+```bash
+sudo apt install openjdk-11-jdk -y
+```
+
+Verify the installation by checking the Java version.
+
+```bash
+java -version
+```
+
+## Step 3: Add Jenkins Repository
+
+To install Jenkins, you need to add the official Jenkins repository to your system.
+
+1. Download and store the Jenkins GPG key:
+
+```bash
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+```
+
+2. Add the Jenkins repository to your system's sources list:
+
+```bash
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/" | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+```
+
+## Step 4: Install Jenkins
+
+Now, update your package list and install Jenkins.
+
+```bash
+sudo apt-get update
+sudo apt-get install jenkins
+```
+
+## Step 5: Start and Enable Jenkins
+
+Start the Jenkins service and enable it to start on boot.
+
+```bash
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+```
+
+Check the status of Jenkins to ensure it's running:
+
+```bash
+sudo systemctl status jenkins
+```
+
+## Step 6: Access Jenkins
+
+By default, Jenkins runs on port 8080. Open a web browser and navigate to:
+
+```
+http://your_server_ip_or_domain:8080
+```
+
+## Step 7: Unlock Jenkins
+
+The initial setup requires a one-time unlock. To retrieve the password, run:
+
+```bash
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+
+Copy the password and paste it into the Jenkins web interface.
+
+## Step 8: Complete the Setup
+
+After unlocking Jenkins, you'll be prompted to install plugins and create an admin user. Follow the on-screen instructions to complete the installation.
+
+## Troubleshooting
+
+### Missing GPG Key
+
+If you encounter issues with a missing GPG key during the repository setup, ensure that you have correctly imported the key using the `wget` command.
+
+### Jenkins Fails to Start
+
+If Jenkins fails to start after installation, check the service status and logs:
+
+```bash
+sudo systemctl status jenkins
+sudo journalctl -xe
+```
+
+Make sure that Java is properly installed and accessible.
+
+## Conclusion
+
+You have successfully installed Jenkins on your Linux system. Enjoy automating your CI/CD pipelines with Jenkins!
+```
+
+You can now copy this content into your `README.md` file for your GitHub repository. Let me know if you need any other adjustments!
 Once SSH is enabled and configured, you can use SSH commands to connect to other machines. For example, to connect to a remote server, use:
 ```bash
 ssh username@hostname_or_ip
