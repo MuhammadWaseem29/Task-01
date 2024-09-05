@@ -1,8 +1,7 @@
 
 # Additional Resources
+# Access related files here: https://drive.google.com/drive/folders/1Os614PQw6uNqxqZpCC2CqH1wnhrvSgsU?usp=sharing
 
-Find related files [here](https://drive.google.com/drive/folders/1Os614PQw6uNqxqZpCC2CqH1wnhrvSgsU?usp=sharing).
-.
 
 To enable and use SSH commands, you need to have the OpenSSH server installed and running on your system. Here’s a general guide to enable SSH commands:
 
