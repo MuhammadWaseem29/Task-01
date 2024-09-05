@@ -152,15 +152,3 @@ sudo journalctl -xe
 
 Make sure that Java is properly installed and accessible.
 
-## Conclusion
-
-You have successfully installed Jenkins on your Linux system. Enjoy automating your CI/CD pipelines with Jenkins!
-```
-
-You can now copy this content into your `README.md` file for your GitHub repository. Let me know if you need any other adjustments!
-Once SSH is enabled and configured, you can use SSH commands to connect to other machines. For example, to connect to a remote server, use:
-```bash
-ssh username@hostname_or_ip
-```
-
-Feel free to ask if you need help with any specific SSH commands or configurations!
